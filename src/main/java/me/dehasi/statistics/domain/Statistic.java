@@ -42,7 +42,7 @@ public final class Statistic {
     }
 
     @JsonIgnore
-    public void update(Transaction transaction) {
+    public synchronized void update(Transaction transaction) {
         ++count;
         sum = sum.add(transaction.amount);
         if (count == 1) {
