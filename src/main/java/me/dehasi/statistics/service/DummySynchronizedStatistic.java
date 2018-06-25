@@ -34,7 +34,11 @@ public class DummySynchronizedStatistic implements StatisticService {
     public synchronized void update(Transaction transaction) {
         ++count;
         sum = sum.add(transaction.amount);
-        min = min.min(transaction.amount);
-        max = max.max(transaction.amount);
+        if (count == 1) {
+            max = min = transaction.amount;
+        } else {
+            min = min.min(transaction.amount);
+            max = max.max(transaction.amount);
+        }
     }
 }
