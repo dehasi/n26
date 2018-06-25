@@ -1,0 +1,19 @@
+== Statistics controller
+
+=== Register
+
+==== Creates account number and assigns the phone and the card number to the account
+curl request:
+
+include::{snippets}/statistic-controller-test/get-statistic_returns-statistic/curl-request.adoc[]
+
+
+HTTP request:
+
+include::{snippets}/statistic-controller-test/get-statistic_returns-statistic/http-request.adoc[]
+
+HTTP response:
+
+include::{snippets}/statistic-controller-test/get-statistic_returns-statistic/http-response.adoc[]
+
+include::{snippets}/statistic-controller-test/get-statistic_returns-statistic/response-body.adoc[]

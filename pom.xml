@@ -136,7 +136,7 @@
                             <attributes>
                                 <snippets>${project.build.directory}/generated-snippets</snippets>
                             </attributes>
-                            <sourceDirectory>src/docs/</sourceDirectory>
+                            <sourceDirectory>src/asciidocs/</sourceDirectory>
                             <outputDirectory>target/generated-docs</outputDirectory>
                         </configuration>
                     </execution>
