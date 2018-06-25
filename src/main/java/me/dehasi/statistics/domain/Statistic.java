@@ -15,12 +15,12 @@ public final class Statistic {
     public BigDecimal min;
     public long count;
 
-    MinMaxPriorityQueue<BigDecimal> minQueue = MinMaxPriorityQueue
+    private MinMaxPriorityQueue<BigDecimal> minQueue = MinMaxPriorityQueue
             .orderedBy(BigDecimal::compareTo)
             .expectedSize(10000)
             .create();
 
-    MinMaxPriorityQueue<BigDecimal> maxQueue = MinMaxPriorityQueue
+    private MinMaxPriorityQueue<BigDecimal> maxQueue = MinMaxPriorityQueue
             .orderedBy((Comparator<BigDecimal>) (o1, o2) -> -1 * o1.compareTo(o2))
             .expectedSize(10000)
             .create();
@@ -60,13 +60,9 @@ public final class Statistic {
     public synchronized void update(Transaction transaction) {
         ++count;
         sum = sum.add(transaction.amount);
-        if (count == 1) {
-            max = min = transaction.amount;
-        } else {
-            minQueue.add(transaction.amount);
-            maxQueue.add(transaction.amount);
-        }
 
+        minQueue.add(transaction.amount);
+        maxQueue.add(transaction.amount);
 
         cleanUp(transaction);
     }
