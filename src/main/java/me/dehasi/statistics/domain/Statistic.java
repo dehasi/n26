@@ -1,10 +1,12 @@
 package me.dehasi.statistics.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.google.common.collect.MinMaxPriorityQueue;
 
 import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.ZonedDateTime;
+import java.util.Comparator;
 
 public final class Statistic {
     public BigDecimal sum;
@@ -12,6 +14,17 @@ public final class Statistic {
     public BigDecimal max;
     public BigDecimal min;
     public long count;
+
+    MinMaxPriorityQueue<BigDecimal> minQueue = MinMaxPriorityQueue
+            .orderedBy(BigDecimal::compareTo)
+            .expectedSize(10000)
+            .create();
+
+    MinMaxPriorityQueue<BigDecimal> maxQueue = MinMaxPriorityQueue
+            .orderedBy((Comparator<BigDecimal>) (o1, o2) -> -1 * o1.compareTo(o2))
+            .expectedSize(10000)
+            .create();
+
 
     public Statistic(BigDecimal sum, BigDecimal max, BigDecimal min, long count) {
         this.sum = sum;
@@ -32,6 +45,8 @@ public final class Statistic {
     @JsonIgnore
     public synchronized Statistic getStatistic() {
         this.avg = count > 0 ? sum.divide(BigDecimal.valueOf(count), 2) : BigDecimal.ZERO;
+        min = minQueue.peekFirst();
+        max = maxQueue.peekFirst();
         return this;
     }
 
@@ -48,9 +63,10 @@ public final class Statistic {
         if (count == 1) {
             max = min = transaction.amount;
         } else {
-            min = min.min(transaction.amount);
-            max = max.max(transaction.amount);
+            minQueue.add(transaction.amount);
+            maxQueue.add(transaction.amount);
         }
+
 
         cleanUp(transaction);
     }
@@ -64,7 +80,9 @@ public final class Statistic {
                 synchronized (this) {
                     --count;
                     sum = sum.add(transaction.amount.negate());
-                    // TODO: update min max
+                    minQueue.remove(transaction.amount);
+                    maxQueue.remove(transaction.amount);
+
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
