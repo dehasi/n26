@@ -9,9 +9,9 @@ public final class Statistic {
     public final BigDecimal min;
     public final long count;
 
-    public Statistic(BigDecimal sum, BigDecimal avg, BigDecimal max, BigDecimal min, long count) {
+    public Statistic(BigDecimal sum, BigDecimal max, BigDecimal min, long count) {
         this.sum = sum;
-        this.avg = avg;
+        this.avg = sum.divide(BigDecimal.valueOf(count));
         this.max = max;
         this.min = min;
         this.count = count;
