@@ -34,7 +34,8 @@ and it give as `O(1)` in average.
 as a general framework to build the web application.
 
 #### Spring Cloud Contract 
-to generate stubs and API unit tests. See `test/resources/contracts`
+to generate stubs and API unit tests. See `test/resources/contracts`. 
+To turn the contracts generation off set `false` to `turn-contract-on` maven property.
   
 #### Spring Rest Docs 
 to generate up to date documentation form unit-tests.

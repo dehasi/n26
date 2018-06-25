@@ -14,8 +14,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-
-public class AbstractContractTest {
+public abstract class AbstractContractTest {
     @LocalServerPort
     int port;
     @Autowired
