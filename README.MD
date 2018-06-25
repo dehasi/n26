@@ -1,42 +1,22 @@
-### Code Challenge
+### Solutions description
 
-We would like to have a restful API for our statistics. The main use case for our API is to
-calculate realtime statistic from the last 60 seconds. There will be two APIs, one of them is
-called every time a transaction is made. It is also the sole input of this rest API. The other one
-returns the statistic based of the transactions of the last 60 seconds.
+There are two branches now:
+* master (with naive solution)
+* remove_stat (with multitheading approach)
 
-### Specs
+### Used technologies
 
-```
-POST /transactions
-```
+#### Spring boot
 
-Every Time a new transaction happened, this endpoint will be called.
+#### Spring Cloud Contract 
+  to generate stubs and API unit tests. See test/resources/contracts
+  
+### Spring Rest Docs 
+to generate up to date documentation form unit-tests.
+All generated documentation is packed to the jar and can be found on `/docs/index.html` url.
 
-Body:
-```
-{
-  "amount": 12.3,
-  "timestamp": 1478192204000
-}
-```
+### Maven dependency plugin
+to avoid transitive dependencies.
 
-```
-GET /statistics
-```
-
-This is the main endpoint of this task, this endpoint have to execute in constant time and
-memory (O(1)). It returns the statistic based on the transactions which happened in the last 60
-seconds.
-
-Returns
-```
-{
-  "sum": 1000,
-  "avg": 100,
-  "max": 200,
-  "min": 50,
-  "count": 10
-}
-```
-
+### Maven sort-pom plugin
+to keep a standard pom structure.
