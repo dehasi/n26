@@ -52,7 +52,6 @@ public final class Statistic {
             max = max.max(transaction.amount);
         }
 
-
         cleanUp(transaction);
     }
 
