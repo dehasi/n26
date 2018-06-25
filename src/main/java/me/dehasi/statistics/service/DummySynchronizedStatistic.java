@@ -12,9 +12,9 @@ import java.math.BigDecimal;
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class DummySynchronizedStatistic implements StatisticService {
 
-    private BigDecimal sum;
-    private BigDecimal max;
-    private BigDecimal min;
+    private BigDecimal sum = BigDecimal.ZERO;
+    private BigDecimal max = BigDecimal.ZERO;
+    private BigDecimal min = BigDecimal.ZERO;
     private long count;
 
     @Override
