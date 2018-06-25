@@ -23,6 +23,7 @@ import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.ZonedDateTime;
 
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -60,6 +61,8 @@ public class TransactionControllerTest {
 
         ResultActions resultActions = mockMvc.perform(post("/transactions").contentType(MediaType.APPLICATION_JSON).content(content))
                 .andExpect(status().isCreated());
+
+        resultActions.andDo(document("{class-name}/{method-name}"));
     }
 
     @Test
@@ -69,5 +72,7 @@ public class TransactionControllerTest {
 
         ResultActions resultActions = mockMvc.perform(post("/transactions").contentType(MediaType.APPLICATION_JSON).content(content))
                 .andExpect(status().isNoContent());
+
+        resultActions.andDo(document("{class-name}/{method-name}"));
     }
 }

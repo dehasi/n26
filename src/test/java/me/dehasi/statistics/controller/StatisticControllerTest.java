@@ -19,6 +19,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.math.BigDecimal;
 
 import static org.mockito.Mockito.when;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -52,8 +53,7 @@ public class StatisticControllerTest {
         ResultActions resultActions = mockMvc.perform(get("/statistics"))
                 .andExpect(status().isOk());
 
-//        resultActions.andDo(document("{class-name}/{method-name}",
-//                REQUEST_FIELDS_SNIPPET));
+        resultActions.andDo(document("{class-name}/{method-name}"));
     }
 
 

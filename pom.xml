@@ -73,6 +73,95 @@
                     <verifyFail>Stop</verifyFail>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>analyze</id>
+                        <goals>
+                            <goal>analyze</goal>
+                        </goals>
+                        <phase>test-compile</phase>
+                        <configuration>
+                            <failOnWarning>false</failOnWarning>
+                            <ignoredUnusedDeclaredDependencies>
+                                <ignoredUnusedDeclaredDependency>
+                                    com.fasterxml.jackson.datatype:jackson-datatype-jsr310
+                                </ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>com.jayway.jsonpath:json-path
+                                </ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>com.toomuchcoding.jsonassert:jsonassert
+                                </ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>io.rest-assured:rest-assured
+                                </ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>io.springfox:springfox-swagger-ui
+                                </ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.springframework:spring-aspects
+                                </ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.springframework:spring-core
+                                </ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.springframework.boot:spring-boot-starter-actuator
+                                </ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.springframework.boot:spring-boot-starter-test
+                                </ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.springframework.boot:spring-boot-starter-web
+                                </ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>
+                                    org.springframework.cloud:spring-cloud-contract-verifier
+                                </ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>
+                                    org.springframework.cloud:spring-cloud-starter-contract-verifier
+                                </ignoredUnusedDeclaredDependency>
+                            </ignoredUnusedDeclaredDependencies>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-docs</id>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                        <phase>prepare-package</phase>
+                        <configuration>
+                            <backend>html</backend>
+                            <doctype>book</doctype>
+                            <attributes>
+                                <snippets>${project.build.directory}/generated-snippets</snippets>
+                            </attributes>
+                            <sourceDirectory>src/docs/</sourceDirectory>
+                            <outputDirectory>target/generated-docs</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <phase>prepare-package</phase>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}/static/docs</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.build.directory}/generated-docs</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
