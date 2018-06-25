@@ -55,18 +55,15 @@ public final class Statistic {
 
         Thread thread = new Thread(() -> {
             try {
-                try {
-                    long wait = 60 * 1000 - (ZonedDateTime.now(Clock.systemUTC()).toInstant().toEpochMilli() - transaction.timestamp);
-                    Thread.sleep(wait);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                long wait = 60 * 1000 - (ZonedDateTime.now(Clock.systemUTC()).toInstant().toEpochMilli() - transaction.timestamp);
+                Thread.sleep(wait);
+
                 synchronized (this) {
                     --count;
                     sum = sum.add(transaction.amount.negate());
                     // TODO: update min max
                 }
-            } catch (Exception e) {
+            } catch (InterruptedException e) {
             }
         });
         thread.start();
