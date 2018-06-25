@@ -12,16 +12,9 @@
 *.iml
 *.ipr
 
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
-
 ### Maven ###
 log/
 target/
-/omni-wallet-service-web/target/
-/omni-wallet-service-docker-builder/target/
+
+### Mac ###
+.DS_Store
