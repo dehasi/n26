@@ -1,0 +1,34 @@
+== Transactions controller
+
+=== Post
+
+==== Accepts data and returns Created
+
+curl request:
+
+include::{snippets}/transaction-controller-test/submit-transaction_in-minute-transaction_201/curl-request.adoc[]
+
+
+HTTP request:
+
+include::{snippets}/transaction-controller-test/submit-transaction_in-minute-transaction_201/http-request.adoc[]
+
+HTTP response:
+
+include::{snippets}/transaction-controller-test/submit-transaction_in-minute-transaction_201/http-response.adoc[]
+
+
+==== Returns no content if data is out of date
+
+curl request:
+
+include::{snippets}/transaction-controller-test/submit-transaction_old-minute-transaction_204/curl-request.adoc[]
+
+
+HTTP request:
+
+include::{snippets}/transaction-controller-test/submit-transaction_old-minute-transaction_204/http-request.adoc[]
+
+HTTP response:
+
+include::{snippets}/transaction-controller-test/submit-transaction_old-minute-transaction_204/http-response.adoc[]

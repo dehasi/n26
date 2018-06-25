@@ -1,3 +1,5 @@
 == Transaction Statistic Service
 
 link:statistics.html[]
+
+link:transactions.html[]

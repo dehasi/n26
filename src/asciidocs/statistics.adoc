@@ -1,8 +1,9 @@
 == Statistics controller
 
-=== Register
+=== Get
 
-==== Creates account number and assigns the phone and the card number to the account
+==== Returns statistics
+
 curl request:
 
 include::{snippets}/statistic-controller-test/get-statistic_returns-statistic/curl-request.adoc[]
