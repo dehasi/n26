@@ -1,4 +1,4 @@
-package me.dehasi.Statistics;
+package me.dehasi.statistics;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
