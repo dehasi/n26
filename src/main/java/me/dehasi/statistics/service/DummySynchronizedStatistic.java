@@ -2,14 +2,11 @@ package me.dehasi.statistics.service;
 
 import me.dehasi.statistics.domain.Statistic;
 import me.dehasi.statistics.domain.Transaction;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
-@Service
-@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+//@Service
+//@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class DummySynchronizedStatistic implements StatisticService {
 
     private BigDecimal sum = BigDecimal.ZERO;
