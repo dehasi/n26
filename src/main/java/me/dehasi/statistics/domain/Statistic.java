@@ -67,6 +67,7 @@ public final class Statistic {
                     // TODO: update min max
                 }
             } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         });
         thread.start();
