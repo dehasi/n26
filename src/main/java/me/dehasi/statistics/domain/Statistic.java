@@ -45,8 +45,8 @@ public final class Statistic {
     @JsonIgnore
     public synchronized Statistic getStatistic() {
         this.avg = count > 0 ? sum.divide(BigDecimal.valueOf(count), 2) : BigDecimal.ZERO;
-        min = minQueue.peekFirst();
-        max = maxQueue.peekFirst();
+        min = minQueue.size() > 0 ? minQueue.peekFirst() : BigDecimal.ZERO;
+        max = maxQueue.size() > 0 ? maxQueue.peekFirst() : BigDecimal.ZERO;
         return this;
     }
 
