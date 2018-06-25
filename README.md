@@ -38,6 +38,7 @@ mvn clean install
 ```
 mvn spring-boot:run -DskipTests
 ```
+The app will start on port: 8080 by default 
 
 ### Used technologies
 
