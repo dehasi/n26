@@ -9,12 +9,12 @@ public class ConcurrentRemoveStatistic implements StatisticService {
     private Statistic statistic = new Statistic();
 
     @Override
-    public synchronized Statistic getStatistic() {
+    public Statistic getStatistic() {
         return statistic.getStatistic();
     }
 
     @Override
-    public synchronized void reset() {
+    public void reset() {
         statistic.reset();
     }
 
