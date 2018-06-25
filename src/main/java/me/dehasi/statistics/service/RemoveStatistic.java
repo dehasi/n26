@@ -46,6 +46,7 @@ public class RemoveStatistic implements StatisticService {
             }
             --count;
             sum = sum.add(transaction.amount.negate());
+            // TODO: update min max
         });
         thread.start();
     }
