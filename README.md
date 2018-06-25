@@ -29,6 +29,16 @@ we still count `avg` as `sum / count`.
 This approach gives as `O(1)` time but not the memory because queues were used. But technically, we can predefine queues size
 and it gives as `O(1)` on average.
 
+### How to
+#### Build
+```
+mvn clean install
+```
+#### Run
+```
+mvn spring-boot:run -DskipTests
+```
+
 ### Used technologies
 
 #### Spring boot
