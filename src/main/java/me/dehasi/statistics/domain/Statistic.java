@@ -53,6 +53,10 @@ public final class Statistic {
         }
 
 
+        cleanUp(transaction);
+    }
+
+    private void cleanUp(Transaction transaction) {
         Thread thread = new Thread(() -> {
             try {
                 long wait = 60 * 1000 - (ZonedDateTime.now(Clock.systemUTC()).toInstant().toEpochMilli() - transaction.timestamp);
